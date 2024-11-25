@@ -85,8 +85,6 @@ El sistema incluye tres funciones **AWS Lambda** y una base de datos **DynamoDB*
 
 ## Arquitectura del Sistema
 
-![Diagrama de arquitectura](assets/arquitectura.png)
-
 ## Diagrama base
 
 ![Diagrama base](../assets/diagrama-base.png)
