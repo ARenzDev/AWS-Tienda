@@ -1,0 +1,20 @@
+{
+  "version": "38.0.1",
+  "files": {
+    "a2e0c4578f1406ed14d29f1a1333c7c0eb78c1a6a402d323746cedab7ca1067e": {
+      "source": {
+        "path": "CognitoUserPoolStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "182399693450-us-east-1": {
+          "bucketName": "cdk-hnb659fds-assets-182399693450-us-east-1",
+          "objectKey": "a2e0c4578f1406ed14d29f1a1333c7c0eb78c1a6a402d323746cedab7ca1067e.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::182399693450:role/cdk-hnb659fds-file-publishing-role-182399693450-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

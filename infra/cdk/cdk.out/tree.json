@@ -1,0 +1,820 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "CognitoUserPoolStack": {
+        "id": "CognitoUserPoolStack",
+        "path": "CognitoUserPoolStack",
+        "children": {
+          "UserPool": {
+            "id": "UserPool",
+            "path": "CognitoUserPoolStack/UserPool",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CognitoUserPoolStack/UserPool/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Cognito::UserPool",
+                  "aws:cdk:cloudformation:props": {
+                    "accountRecoverySetting": {
+                      "recoveryMechanisms": [
+                        {
+                          "name": "verified_email",
+                          "priority": 1
+                        }
+                      ]
+                    },
+                    "adminCreateUserConfig": {
+                      "allowAdminCreateUserOnly": false
+                    },
+                    "autoVerifiedAttributes": [
+                      "email"
+                    ],
+                    "emailVerificationMessage": "The verification code to your new account is {####}",
+                    "emailVerificationSubject": "Verify your new account",
+                    "policies": {
+                      "passwordPolicy": {
+                        "minimumLength": 8,
+                        "requireLowercase": false,
+                        "requireUppercase": false,
+                        "requireNumbers": false,
+                        "requireSymbols": false
+                      }
+                    },
+                    "smsVerificationMessage": "The verification code to your new account is {####}",
+                    "usernameAttributes": [
+                      "email"
+                    ],
+                    "userPoolName": "UserPoolForApiGateway",
+                    "verificationMessageTemplate": {
+                      "defaultEmailOption": "CONFIRM_WITH_CODE",
+                      "emailMessage": "The verification code to your new account is {####}",
+                      "emailSubject": "Verify your new account",
+                      "smsMessage": "The verification code to your new account is {####}"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_cognito.CfnUserPool",
+                  "version": "2.164.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_cognito.UserPool",
+              "version": "2.164.0"
+            }
+          },
+          "UserPoolClient": {
+            "id": "UserPoolClient",
+            "path": "CognitoUserPoolStack/UserPoolClient",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CognitoUserPoolStack/UserPoolClient/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Cognito::UserPoolClient",
+                  "aws:cdk:cloudformation:props": {
+                    "allowedOAuthFlows": [
+                      "implicit",
+                      "code"
+                    ],
+                    "allowedOAuthFlowsUserPoolClient": true,
+                    "allowedOAuthScopes": [
+                      "profile",
+                      "phone",
+                      "email",
+                      "openid",
+                      "aws.cognito.signin.user.admin"
+                    ],
+                    "callbackUrLs": [
+                      "https://example.com"
+                    ],
+                    "explicitAuthFlows": [
+                      "ALLOW_USER_PASSWORD_AUTH",
+                      "ALLOW_ADMIN_USER_PASSWORD_AUTH",
+                      "ALLOW_CUSTOM_AUTH",
+                      "ALLOW_USER_SRP_AUTH",
+                      "ALLOW_REFRESH_TOKEN_AUTH"
+                    ],
+                    "supportedIdentityProviders": [
+                      "COGNITO"
+                    ],
+                    "userPoolId": {
+                      "Ref": "UserPool6BA7E5F2"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_cognito.CfnUserPoolClient",
+                  "version": "2.164.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_cognito.UserPoolClient",
+              "version": "2.164.0"
+            }
+          },
+          "UserPoolId": {
+            "id": "UserPoolId",
+            "path": "CognitoUserPoolStack/UserPoolId",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.164.0"
+            }
+          },
+          "UserPoolClientId": {
+            "id": "UserPoolClientId",
+            "path": "CognitoUserPoolStack/UserPoolClientId",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.164.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "CognitoUserPoolStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "CognitoUserPoolStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.164.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "Exports": {
+            "id": "Exports",
+            "path": "CognitoUserPoolStack/Exports",
+            "children": {
+              "Output{\"Fn::GetAtt\":[\"UserPool6BA7E5F2\",\"Arn\"]}": {
+                "id": "Output{\"Fn::GetAtt\":[\"UserPool6BA7E5F2\",\"Arn\"]}",
+                "path": "CognitoUserPoolStack/Exports/Output{\"Fn::GetAtt\":[\"UserPool6BA7E5F2\",\"Arn\"]}",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.164.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "CognitoUserPoolStack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.164.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "CognitoUserPoolStack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.164.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.164.0"
+        }
+      },
+      "HelloWorldLambdaFnStack": {
+        "id": "HelloWorldLambdaFnStack",
+        "path": "HelloWorldLambdaFnStack",
+        "children": {
+          "HelloWorldLambdaFn": {
+            "id": "HelloWorldLambdaFn",
+            "path": "HelloWorldLambdaFnStack/HelloWorldLambdaFn",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "HelloWorldLambdaFnStack/HelloWorldLambdaFn/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "HelloWorldLambdaFnStack/HelloWorldLambdaFn/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.164.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "HelloWorldLambdaFnStack/HelloWorldLambdaFn/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.164.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.164.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "HelloWorldLambdaFnStack/HelloWorldLambdaFn/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "HelloWorldLambdaFnStack/HelloWorldLambdaFn/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.164.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "HelloWorldLambdaFnStack/HelloWorldLambdaFn/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.164.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.164.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "HelloWorldLambdaFnStack/HelloWorldLambdaFn/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": "cdk-hnb659fds-assets-182399693450-us-east-1",
+                      "s3Key": "29e78718d7f5dd3e2441601b27487a4eab943503c7d8a18cd4459a222e57757d.zip"
+                    },
+                    "description": "Function that returns 200 with \"Hello world!\"",
+                    "functionName": "HelloWorldApi",
+                    "handler": "helloworld.lambda_handler",
+                    "role": {
+                      "Fn::GetAtt": [
+                        "HelloWorldLambdaFnServiceRoleC0A11B61",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "python3.9",
+                    "timeout": 300
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.164.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.164.0"
+            }
+          },
+          "LambdaFuncName": {
+            "id": "LambdaFuncName",
+            "path": "HelloWorldLambdaFnStack/LambdaFuncName",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.164.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "HelloWorldLambdaFnStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "HelloWorldLambdaFnStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.164.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "Exports": {
+            "id": "Exports",
+            "path": "HelloWorldLambdaFnStack/Exports",
+            "children": {
+              "Output{\"Fn::GetAtt\":[\"HelloWorldLambdaFnD38412E4\",\"Arn\"]}": {
+                "id": "Output{\"Fn::GetAtt\":[\"HelloWorldLambdaFnD38412E4\",\"Arn\"]}",
+                "path": "HelloWorldLambdaFnStack/Exports/Output{\"Fn::GetAtt\":[\"HelloWorldLambdaFnD38412E4\",\"Arn\"]}",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.164.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "HelloWorldLambdaFnStack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.164.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "HelloWorldLambdaFnStack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.164.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.164.0"
+        }
+      },
+      "CognitoProtectedApiStack": {
+        "id": "CognitoProtectedApiStack",
+        "path": "CognitoProtectedApiStack",
+        "children": {
+          "AuthorizerForHelloWorldApi": {
+            "id": "AuthorizerForHelloWorldApi",
+            "path": "CognitoProtectedApiStack/AuthorizerForHelloWorldApi",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CognitoProtectedApiStack/AuthorizerForHelloWorldApi/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Authorizer",
+                  "aws:cdk:cloudformation:props": {
+                    "identitySource": "method.request.header.Authorization",
+                    "name": "CognitoProtectedApiStackAuthorizerForHelloWorldApi7399D517",
+                    "providerArns": [
+                      {
+                        "Fn::ImportValue": "CognitoUserPoolStack:ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00"
+                      }
+                    ],
+                    "restApiId": {
+                      "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+                    },
+                    "type": "COGNITO_USER_POOLS"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnAuthorizer",
+                  "version": "2.164.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_apigateway.CognitoUserPoolsAuthorizer",
+              "version": "2.164.0"
+            }
+          },
+          "HelloWorldLambdaRestApi": {
+            "id": "HelloWorldLambdaRestApi",
+            "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "helloworld-api"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnRestApi",
+                  "version": "2.164.0"
+                }
+              },
+              "CloudWatchRole": {
+                "id": "CloudWatchRole",
+                "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/CloudWatchRole",
+                "children": {
+                  "ImportCloudWatchRole": {
+                    "id": "ImportCloudWatchRole",
+                    "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/CloudWatchRole/ImportCloudWatchRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.164.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/CloudWatchRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "apigateway.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.164.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.164.0"
+                }
+              },
+              "Account": {
+                "id": "Account",
+                "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Account",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                  "aws:cdk:cloudformation:props": {
+                    "cloudWatchRoleArn": {
+                      "Fn::GetAtt": [
+                        "HelloWorldLambdaRestApiCloudWatchRole92B48404",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnAccount",
+                  "version": "2.164.0"
+                }
+              },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "description": "Automatically created by the RestApi construct",
+                        "restApiId": {
+                          "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
+                      "version": "2.164.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
+                  "version": "2.164.0"
+                }
+              },
+              "DeploymentStage.v1": {
+                "id": "DeploymentStage.v1",
+                "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/DeploymentStage.v1",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/DeploymentStage.v1/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "deploymentId": {
+                          "Ref": "HelloWorldLambdaRestApiDeployment33A5E9C893bc18b622e28c7cac25748d41134103"
+                        },
+                        "restApiId": {
+                          "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+                        },
+                        "stageName": "v1"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
+                      "version": "2.164.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Stage",
+                  "version": "2.164.0"
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Endpoint",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.164.0"
+                }
+              },
+              "Default": {
+                "id": "Default",
+                "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Default",
+                "children": {
+                  "hello": {
+                    "id": "hello",
+                    "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Default/hello",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Default/hello/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "HelloWorldLambdaRestApi38E0B6C7",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "hello",
+                            "restApiId": {
+                              "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.164.0"
+                        }
+                      },
+                      "GET": {
+                        "id": "GET",
+                        "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Default/hello/GET",
+                        "children": {
+                          "ApiPermission.CognitoProtectedApiStackHelloWorldLambdaRestApi650041D6.GET..hello": {
+                            "id": "ApiPermission.CognitoProtectedApiStackHelloWorldLambdaRestApi650041D6.GET..hello",
+                            "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Default/hello/GET/ApiPermission.CognitoProtectedApiStackHelloWorldLambdaRestApi650041D6.GET..hello",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::ImportValue": "HelloWorldLambdaFnStack:ExportsOutputFnGetAttHelloWorldLambdaFnD38412E4Arn40933612"
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-east-1:182399693450:",
+                                      {
+                                        "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "HelloWorldLambdaRestApiDeploymentStagev15F24FE1A"
+                                      },
+                                      "/GET/hello"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.164.0"
+                            }
+                          },
+                          "ApiPermission.Test.CognitoProtectedApiStackHelloWorldLambdaRestApi650041D6.GET..hello": {
+                            "id": "ApiPermission.Test.CognitoProtectedApiStackHelloWorldLambdaRestApi650041D6.GET..hello",
+                            "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Default/hello/GET/ApiPermission.Test.CognitoProtectedApiStackHelloWorldLambdaRestApi650041D6.GET..hello",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::ImportValue": "HelloWorldLambdaFnStack:ExportsOutputFnGetAttHelloWorldLambdaFnD38412E4Arn40933612"
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-east-1:182399693450:",
+                                      {
+                                        "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+                                      },
+                                      "/test-invoke-stage/GET/hello"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.164.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Default/hello/GET/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "authorizationType": "COGNITO_USER_POOLS",
+                                "authorizerId": {
+                                  "Ref": "AuthorizerForHelloWorldApiD98B838F"
+                                },
+                                "httpMethod": "GET",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::ImportValue": "HelloWorldLambdaFnStack:ExportsOutputFnGetAttHelloWorldLambdaFnD38412E4Arn40933612"
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                },
+                                "resourceId": {
+                                  "Ref": "HelloWorldLambdaRestApihello48F3620D"
+                                },
+                                "restApiId": {
+                                  "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.164.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.164.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.164.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.ResourceBase",
+                  "version": "2.164.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_apigateway.LambdaRestApi",
+              "version": "2.164.0"
+            }
+          },
+          "RestApiEndpointUrl": {
+            "id": "RestApiEndpointUrl",
+            "path": "CognitoProtectedApiStack/RestApiEndpointUrl",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.164.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "CognitoProtectedApiStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "CognitoProtectedApiStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.164.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "CognitoProtectedApiStack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.164.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "CognitoProtectedApiStack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.164.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.164.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.4.2"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.164.0"
+    }
+  }
+}

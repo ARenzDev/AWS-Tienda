@@ -1,0 +1,335 @@
+{
+ "Resources": {
+  "AuthorizerForHelloWorldApiD98B838F": {
+   "Type": "AWS::ApiGateway::Authorizer",
+   "Properties": {
+    "IdentitySource": "method.request.header.Authorization",
+    "Name": "CognitoProtectedApiStackAuthorizerForHelloWorldApi7399D517",
+    "ProviderARNs": [
+     {
+      "Fn::ImportValue": "CognitoUserPoolStack:ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00"
+     }
+    ],
+    "RestApiId": {
+     "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+    },
+    "Type": "COGNITO_USER_POOLS"
+   },
+   "Metadata": {
+    "aws:cdk:path": "CognitoProtectedApiStack/AuthorizerForHelloWorldApi/Resource"
+   }
+  },
+  "HelloWorldLambdaRestApi38E0B6C7": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "helloworld-api"
+   },
+   "Metadata": {
+    "aws:cdk:path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Resource"
+   }
+  },
+  "HelloWorldLambdaRestApiCloudWatchRole92B48404": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "apigateway.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+       ]
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/CloudWatchRole/Resource"
+   }
+  },
+  "HelloWorldLambdaRestApiAccountBABD3CCC": {
+   "Type": "AWS::ApiGateway::Account",
+   "Properties": {
+    "CloudWatchRoleArn": {
+     "Fn::GetAtt": [
+      "HelloWorldLambdaRestApiCloudWatchRole92B48404",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "HelloWorldLambdaRestApi38E0B6C7"
+   ],
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Account"
+   }
+  },
+  "HelloWorldLambdaRestApiDeployment33A5E9C893bc18b622e28c7cac25748d41134103": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "Description": "Automatically created by the RestApi construct",
+    "RestApiId": {
+     "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+    }
+   },
+   "DependsOn": [
+    "HelloWorldLambdaRestApihelloGETCFC95309",
+    "HelloWorldLambdaRestApihello48F3620D"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Deployment/Resource"
+   }
+  },
+  "HelloWorldLambdaRestApiDeploymentStagev15F24FE1A": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "DeploymentId": {
+     "Ref": "HelloWorldLambdaRestApiDeployment33A5E9C893bc18b622e28c7cac25748d41134103"
+    },
+    "RestApiId": {
+     "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+    },
+    "StageName": "v1"
+   },
+   "DependsOn": [
+    "HelloWorldLambdaRestApiAccountBABD3CCC"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/DeploymentStage.v1/Resource"
+   }
+  },
+  "HelloWorldLambdaRestApihello48F3620D": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "HelloWorldLambdaRestApi38E0B6C7",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "hello",
+    "RestApiId": {
+     "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Default/hello/Resource"
+   }
+  },
+  "HelloWorldLambdaRestApihelloGETApiPermissionCognitoProtectedApiStackHelloWorldLambdaRestApi650041D6GEThelloD603BD39": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "HelloWorldLambdaFnStack:ExportsOutputFnGetAttHelloWorldLambdaFnD38412E4Arn40933612"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:182399693450:",
+       {
+        "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+       },
+       "/",
+       {
+        "Ref": "HelloWorldLambdaRestApiDeploymentStagev15F24FE1A"
+       },
+       "/GET/hello"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Default/hello/GET/ApiPermission.CognitoProtectedApiStackHelloWorldLambdaRestApi650041D6.GET..hello"
+   }
+  },
+  "HelloWorldLambdaRestApihelloGETApiPermissionTestCognitoProtectedApiStackHelloWorldLambdaRestApi650041D6GEThello9835C245": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "HelloWorldLambdaFnStack:ExportsOutputFnGetAttHelloWorldLambdaFnD38412E4Arn40933612"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:182399693450:",
+       {
+        "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+       },
+       "/test-invoke-stage/GET/hello"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Default/hello/GET/ApiPermission.Test.CognitoProtectedApiStackHelloWorldLambdaRestApi650041D6.GET..hello"
+   }
+  },
+  "HelloWorldLambdaRestApihelloGETCFC95309": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "COGNITO_USER_POOLS",
+    "AuthorizerId": {
+     "Ref": "AuthorizerForHelloWorldApiD98B838F"
+    },
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::ImportValue": "HelloWorldLambdaFnStack:ExportsOutputFnGetAttHelloWorldLambdaFnD38412E4Arn40933612"
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "HelloWorldLambdaRestApihello48F3620D"
+    },
+    "RestApiId": {
+     "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CognitoProtectedApiStack/HelloWorldLambdaRestApi/Default/hello/GET/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WOwU7DMAyGn2X3NIwNIXEs5Qha1Ykz8lKvNUviKnFUlarvjkqQKCd//2/rkw/6/vFB73cwxsK0t8LSRc9nAXNTMMaPGQbqQHCESc8Vd56E3yOGmtnGMknPgb4wqOrqN+kV3KWFBqOUA627DZbGcPKiXnCwPDn0srabdBbocO0yNBg5BYPPEP/CrzPzG0rP7VplWhSB03PDNt+xxUXZn5d0dfU1BkcxEvvln++UZEiyNS+qnqRnf3fUT/qw331GoiIkL+RQN3l+A5A4vmhAAQAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "CognitoProtectedApiStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "HelloWorldLambdaRestApiEndpointE13E7979": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "HelloWorldLambdaRestApiDeploymentStagev15F24FE1A"
+      },
+      "/"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": "ApiGatewayRestApiEndpoint"
+   }
+  },
+  "RestApiEndpointUrl": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "HelloWorldLambdaRestApi38E0B6C7"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "HelloWorldLambdaRestApiDeploymentStagev15F24FE1A"
+      },
+      "/"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": "CognitoProtectedApiStack-RestApiEndpointUrl"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
