@@ -1,0 +1,131 @@
+{
+ "Resources": {
+  "HelloWorldLambdaFnServiceRoleC0A11B61": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "HelloWorldLambdaFnStack/HelloWorldLambdaFn/ServiceRole/Resource"
+   }
+  },
+  "HelloWorldLambdaFnD38412E4": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-182399693450-us-east-1",
+     "S3Key": "29e78718d7f5dd3e2441601b27487a4eab943503c7d8a18cd4459a222e57757d.zip"
+    },
+    "Description": "Function that returns 200 with \"Hello world!\"",
+    "FunctionName": "HelloWorldApi",
+    "Handler": "helloworld.lambda_handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "HelloWorldLambdaFnServiceRoleC0A11B61",
+      "Arn"
+     ]
+    },
+    "Runtime": "python3.9",
+    "Timeout": 300
+   },
+   "DependsOn": [
+    "HelloWorldLambdaFnServiceRoleC0A11B61"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "HelloWorldLambdaFnStack/HelloWorldLambdaFn/Resource",
+    "aws:asset:path": "asset.29e78718d7f5dd3e2441601b27487a4eab943503c7d8a18cd4459a222e57757d",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWMTQ6CMBCFz+J+GBGMiUsxcauBA5ChVKxAMcw0xDS9uynq6nt5fxnuDntMN7Rwoto+GUyDvhJSPdDCtR9obFpCf3FWiZksnO/2rwMYGtGX06CjHRmA85qYtTCeIoBzLJzqtRTEOkCpeXKz0rCmlVBnbBfXVycvJ+vPrxLg9pbHZLc5HjFLN082JpmdFTNqLL/8AKJ7Kje/AAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "HelloWorldLambdaFnStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "LambdaFuncName": {
+   "Value": {
+    "Ref": "HelloWorldLambdaFnD38412E4"
+   },
+   "Export": {
+    "Name": "HelloWorldLambdaFnStack-LambdaFuncName"
+   }
+  },
+  "ExportsOutputFnGetAttHelloWorldLambdaFnD38412E4Arn40933612": {
+   "Value": {
+    "Fn::GetAtt": [
+     "HelloWorldLambdaFnD38412E4",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "HelloWorldLambdaFnStack:ExportsOutputFnGetAttHelloWorldLambdaFnD38412E4Arn40933612"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

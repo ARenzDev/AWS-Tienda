@@ -1,0 +1,20 @@
+{
+  "version": "38.0.1",
+  "files": {
+    "30bd2d287a7f645eca17f801fbf5bdca975d015449efd1783f1ffe2d20270918": {
+      "source": {
+        "path": "CognitoProtectedApiStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "182399693450-us-east-1": {
+          "bucketName": "cdk-hnb659fds-assets-182399693450-us-east-1",
+          "objectKey": "30bd2d287a7f645eca17f801fbf5bdca975d015449efd1783f1ffe2d20270918.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::182399693450:role/cdk-hnb659fds-file-publishing-role-182399693450-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
