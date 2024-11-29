@@ -1,0 +1,343 @@
+{
+ "Resources": {
+  "AuthorizerForProxyLambda4987AF9F": {
+   "Type": "AWS::ApiGateway::Authorizer",
+   "Properties": {
+    "IdentitySource": "method.request.header.Authorization",
+    "Name": "UserAuthorizerCognitoAuthorizerForProxyLambda89881803",
+    "ProviderARNs": [
+     {
+      "Fn::ImportValue": "cognitoPoolUser:ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00"
+     }
+    ],
+    "RestApiId": {
+     "Ref": "LambdaProxy04222A64"
+    },
+    "Type": "COGNITO_USER_POOLS"
+   },
+   "Metadata": {
+    "aws:cdk:path": "UserAuthorizerCognito/AuthorizerForProxyLambda/Resource"
+   }
+  },
+  "LambdaProxy04222A64": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "lambda-api"
+   },
+   "Metadata": {
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Resource"
+   }
+  },
+  "LambdaProxyCloudWatchRole44FDA5FC": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "apigateway.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+       ]
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/CloudWatchRole/Resource"
+   }
+  },
+  "LambdaProxyAccountCF3FAC1B": {
+   "Type": "AWS::ApiGateway::Account",
+   "Properties": {
+    "CloudWatchRoleArn": {
+     "Fn::GetAtt": [
+      "LambdaProxyCloudWatchRole44FDA5FC",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "LambdaProxy04222A64"
+   ],
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Account"
+   }
+  },
+  "LambdaProxyDeployment64C634679a85e3156b94495c504c03b071a4315a": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "Description": "Automatically created by the RestApi construct",
+    "RestApiId": {
+     "Ref": "LambdaProxy04222A64"
+    }
+   },
+   "DependsOn": [
+    "LambdaProxyhelloGET0A01B36A",
+    "LambdaProxyhelloA50595DC"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Deployment/Resource"
+   }
+  },
+  "LambdaProxyDeploymentStagev142BEB93C": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "DeploymentId": {
+     "Ref": "LambdaProxyDeployment64C634679a85e3156b94495c504c03b071a4315a"
+    },
+    "RestApiId": {
+     "Ref": "LambdaProxy04222A64"
+    },
+    "StageName": "v1"
+   },
+   "DependsOn": [
+    "LambdaProxyAccountCF3FAC1B"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/DeploymentStage.v1/Resource"
+   }
+  },
+  "LambdaProxyhelloA50595DC": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "LambdaProxy04222A64",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "hello",
+    "RestApiId": {
+     "Ref": "LambdaProxy04222A64"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/Resource"
+   }
+  },
+  "LambdaProxyhelloGETApiPermissionUserAuthorizerCognitoLambdaProxyE0BC8426GEThelloE9D41C7E": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "ApiLambdaProxy:ExportsOutputFnGetAttApiLambdaProxyFn8CF9710CArn95182CA3"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "LambdaProxy04222A64"
+       },
+       "/",
+       {
+        "Ref": "LambdaProxyDeploymentStagev142BEB93C"
+       },
+       "/GET/hello"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello"
+   }
+  },
+  "LambdaProxyhelloGETApiPermissionTestUserAuthorizerCognitoLambdaProxyE0BC8426GEThello4CB5799A": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "ApiLambdaProxy:ExportsOutputFnGetAttApiLambdaProxyFn8CF9710CArn95182CA3"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "LambdaProxy04222A64"
+       },
+       "/test-invoke-stage/GET/hello"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.Test.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello"
+   }
+  },
+  "LambdaProxyhelloGET0A01B36A": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "COGNITO_USER_POOLS",
+    "AuthorizerId": {
+     "Ref": "AuthorizerForProxyLambda4987AF9F"
+    },
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::ImportValue": "ApiLambdaProxy:ExportsOutputFnGetAttApiLambdaProxyFn8CF9710CArn95182CA3"
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "LambdaProxyhelloA50595DC"
+    },
+    "RestApiId": {
+     "Ref": "LambdaProxy04222A64"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WOwW6DMAyGn6X3kInu0DNjx01DVD1XbnDBaxKjxBFiiHefWCaNnfz9v61PPuryVOryAFMsTPcoLN30chYwDwVTvC4wUg+CE8x6qbn3JHyJGBpmG6skAwf6wqDqu9+lN3C3DlqMUo207XZYGcPJi3rF0fLs0MvW7tJZoMety9Bi5BQMvkD8C7/OzO8oA3dblWlVBE4vLdt8xxZXZX9e0vXdNxgcxUjs13++jyRjkr15Vc0sA/unZ10e9enwGYmKkLyQQ93m+Q2eaJLmQAEAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "UserAuthorizerCognito/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "LambdaProxyEndpointCBA10A39": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "LambdaProxy04222A64"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "LambdaProxyDeploymentStagev142BEB93C"
+      },
+      "/"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": "ApiGatewayRestApiEndpoint"
+   }
+  },
+  "RestApiEndpointUrl": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "LambdaProxy04222A64"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "LambdaProxyDeploymentStagev142BEB93C"
+      },
+      "/"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": "UserAuthorizerCognito-RestApiEndpointUrl"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

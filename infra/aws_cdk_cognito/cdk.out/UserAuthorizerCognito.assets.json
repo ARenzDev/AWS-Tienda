@@ -1,0 +1,20 @@
+{
+  "version": "38.0.1",
+  "files": {
+    "94a9927801a32df620d3727228b375d1878295f81f90cf57fc6c0d24a0b816c2": {
+      "source": {
+        "path": "UserAuthorizerCognito.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-us-east-1": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1",
+          "objectKey": "94a9927801a32df620d3727228b375d1878295f81f90cf57fc6c0d24a0b816c2.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
