@@ -5,6 +5,7 @@ from aws_cdk import (
     aws_events as events,
     aws_events_targets as targets,
     Stack,
+    aws_dynamodb as dynamodb
 )
 from constructs import Construct
 
@@ -60,26 +61,59 @@ class RegistroTiendasCdkStack(Stack):
         event_bus.grant_put_events_to(crear_tienda2_lambda)
 
         # Regla para eventos de animales
+        # Definimos el patrón de eventos correctamente
+        event_pattern = events.EventPattern(
+            source=["tienda.registration"],
+            detail_type=["Productos1 registrado"]
+        )
+
+        # Creamos la regla de eventos con el patrón adecuado
         tienda1_event_rule = events.Rule(
             self, "TiendaEventRule",
             event_bus=event_bus,
-            event_pattern={
-                "source": ["tienda.registration"],
-                "detail-type": ["Productos1 registrado"]
-            }
+            event_pattern=event_pattern
         )
         tienda1_event_rule.add_target(targets.LambdaFunction(process_tienda1_lambda))
+        
 
         # Regla para eventos de frutas
+        # Definimos el patrón de eventos correctamente
+        event_pattern = events.EventPattern(
+            source=["tienda2.registration"],
+            detail_type=["Productos2 registrado"]
+        )
+
+        # Creamos la regla de eventos con el patrón adecuado
         tienda2_event_rule = events.Rule(
             self, "Tienda2EventRule",
             event_bus=event_bus,
-            event_pattern={
-                "source": ["tienda2.registration"],
-                "detail-type": ["Productos2 registrado"]
-            }
+            event_pattern=event_pattern
         )
         tienda2_event_rule.add_target(targets.LambdaFunction(process_tienda2_lambda))
+
+        global_table = dynamodb.TableV2(
+            self,
+            id="GlobalTable",
+            table_name="tienda1",
+            billing=dynamodb.Billing.on_demand(),
+            partition_key=dynamodb.Attribute(
+                name="id_pk", type=dynamodb.AttributeType.STRING
+            ),
+            removal_policy=cdk.RemovalPolicy.DESTROY,
+        )
+        global_table2 = dynamodb.TableV2(
+            self,
+            id="GlobalTable2",
+            table_name="tienda2",
+            billing=dynamodb.Billing.on_demand(),
+            partition_key=dynamodb.Attribute(
+                name="id_pk2", type=dynamodb.AttributeType.STRING
+            ),
+            removal_policy=cdk.RemovalPolicy.DESTROY,
+        )
+
+        global_table.grant_full_access(crear_tienda_lambda)
+        global_table2.grant_full_access(crear_tienda2_lambda)
 
         # Salidas
         cdk.CfnOutput(self, "EventBusName", value=event_bus.event_bus_name)

@@ -83,7 +83,7 @@
     "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Account"
    }
   },
-  "LambdaProxyDeployment64C634679a85e3156b94495c504c03b071a4315a": {
+  "LambdaProxyDeployment64C6346786470fe83fc863665dc03d93464c2233": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "Description": "Automatically created by the RestApi construct",
@@ -92,8 +92,8 @@
     }
    },
    "DependsOn": [
-    "LambdaProxyhelloGET0A01B36A",
-    "LambdaProxyhelloA50595DC"
+    "LambdaProxyproxyPOST84C711B7",
+    "LambdaProxyproxyFDEAC71E"
    ],
    "Metadata": {
     "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Deployment/Resource"
@@ -103,7 +103,7 @@
    "Type": "AWS::ApiGateway::Stage",
    "Properties": {
     "DeploymentId": {
-     "Ref": "LambdaProxyDeployment64C634679a85e3156b94495c504c03b071a4315a"
+     "Ref": "LambdaProxyDeployment64C6346786470fe83fc863665dc03d93464c2233"
     },
     "RestApiId": {
      "Ref": "LambdaProxy04222A64"
@@ -117,7 +117,7 @@
     "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/DeploymentStage.v1/Resource"
    }
   },
-  "LambdaProxyhelloA50595DC": {
+  "LambdaProxyproxyFDEAC71E": {
    "Type": "AWS::ApiGateway::Resource",
    "Properties": {
     "ParentId": {
@@ -126,16 +126,16 @@
       "RootResourceId"
      ]
     },
-    "PathPart": "hello",
+    "PathPart": "proxy",
     "RestApiId": {
      "Ref": "LambdaProxy04222A64"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/Resource"
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/proxy/Resource"
    }
   },
-  "LambdaProxyhelloGETApiPermissionUserAuthorizerCognitoLambdaProxyE0BC8426GEThelloE9D41C7E": {
+  "LambdaProxyproxyPOSTApiPermissionUserAuthorizerCognitoLambdaProxyE0BC8426POSTproxy5BD74E2C": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -151,11 +151,7 @@
        {
         "Ref": "AWS::Partition"
        },
-       ":execute-api:us-east-1:",
-       {
-        "Ref": "AWS::AccountId"
-       },
-       ":",
+       ":execute-api:us-east-1:891612579761:",
        {
         "Ref": "LambdaProxy04222A64"
        },
@@ -163,16 +159,16 @@
        {
         "Ref": "LambdaProxyDeploymentStagev142BEB93C"
        },
-       "/GET/hello"
+       "/POST/proxy"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello"
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/proxy/POST/ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.POST..proxy"
    }
   },
-  "LambdaProxyhelloGETApiPermissionTestUserAuthorizerCognitoLambdaProxyE0BC8426GEThello4CB5799A": {
+  "LambdaProxyproxyPOSTApiPermissionTestUserAuthorizerCognitoLambdaProxyE0BC8426POSTproxy8B9422F0": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -188,31 +184,27 @@
        {
         "Ref": "AWS::Partition"
        },
-       ":execute-api:us-east-1:",
-       {
-        "Ref": "AWS::AccountId"
-       },
-       ":",
+       ":execute-api:us-east-1:891612579761:",
        {
         "Ref": "LambdaProxy04222A64"
        },
-       "/test-invoke-stage/GET/hello"
+       "/test-invoke-stage/POST/proxy"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.Test.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello"
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/proxy/POST/ApiPermission.Test.UserAuthorizerCognitoLambdaProxyE0BC8426.POST..proxy"
    }
   },
-  "LambdaProxyhelloGET0A01B36A": {
+  "LambdaProxyproxyPOST84C711B7": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
     "AuthorizationType": "COGNITO_USER_POOLS",
     "AuthorizerId": {
      "Ref": "AuthorizerForProxyLambda4987AF9F"
     },
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "Integration": {
      "IntegrationHttpMethod": "POST",
      "Type": "AWS_PROXY",
@@ -234,20 +226,20 @@
      }
     },
     "ResourceId": {
-     "Ref": "LambdaProxyhelloA50595DC"
+     "Ref": "LambdaProxyproxyFDEAC71E"
     },
     "RestApiId": {
      "Ref": "LambdaProxy04222A64"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/Resource"
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/proxy/POST/Resource"
    }
   },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WOwW6DMAyGn6X3kInu0DNjx01DVD1XbnDBaxKjxBFiiHefWCaNnfz9v61PPuryVOryAFMsTPcoLN30chYwDwVTvC4wUg+CE8x6qbn3JHyJGBpmG6skAwf6wqDqu9+lN3C3DlqMUo207XZYGcPJi3rF0fLs0MvW7tJZoMety9Bi5BQMvkD8C7/OzO8oA3dblWlVBE4vLdt8xxZXZX9e0vXdNxgcxUjs13++jyRjkr15Vc0sA/unZ10e9enwGYmKkLyQQ93m+Q2eaJLmQAEAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WOwU7DMAyGn2X3NNBxQBxLOYKoOnFGXuq13pK4ShxVpeq7oxIkysnf/9v65KMuH0tdHmCKheluhaWzXk4C5qZgip8LjNSD4ASzXmruPQl/RAwNs41VkoEDfWFQ9cXv0iu4cwctRqlG2nY7rIzh5EW94Gh5duhla3fpJNDj1mVoMXIKBp8h/oVfZ+Y3lIG7rcq0KgKnl5ZtvmOLq7I/L+n64hsMjmIk9us/33uSMcnevKpmloH93YN+0sf7wzUSFSF5IYe6zfMbTHy3akABAAA="
    },
    "Metadata": {
     "aws:cdk:path": "UserAuthorizerCognito/CDKMetadata/Default"

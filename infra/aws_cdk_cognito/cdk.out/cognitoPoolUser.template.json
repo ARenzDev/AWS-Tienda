@@ -85,7 +85,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02JQQrCMBAA39J7spJ66AP6AEvFs8S46tqYLdkNRUr/LloUTzPM1OAaB67yk9hwHmykE8x79WEwfpJj4GsiZZgPgrljjqa9pJ9/pY2ESf/XWpZ32hUdy2f2KFxywMV0T71x2mzB1dBUdyGyuSSlB0K/8gWfNel1mAAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02JQQrCMBAA39J7spp6EM99gKXiWWJcdW3MSnZDkdK/ixbF0wwzNbi1A1f5QWw49TbSEcad+tAbP8gh8CWRMox7wdwyR9Oc08+/0kTCpP9rLtM7bYs+ymd2KFxywMm0T71yWqxgA/WyugmRzSUp3RG6mS9NIcz5mAAAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "cognitoPoolUser/CDKMetadata/Default"
