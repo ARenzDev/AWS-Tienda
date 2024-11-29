@@ -11,21 +11,21 @@
     },
     "cognitoPoolUser": {
       "type": "aws:cloudformation:stack",
-      "environment": "aws://unknown-account/us-east-1",
+      "environment": "aws://820242930388/us-east-1",
       "properties": {
         "templateFile": "cognitoPoolUser.template.json",
         "terminationProtection": false,
         "validateOnSynth": false,
-        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-us-east-1",
-        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1/68ef72c71ab3dc535d15b759bf5ec03e4a9c205151ec8e9bb173c9885b38a97c.json",
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-deploy-role-820242930388-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-cfn-exec-role-820242930388-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-820242930388-us-east-1/68ef72c71ab3dc535d15b759bf5ec03e4a9c205151ec8e9bb173c9885b38a97c.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
           "cognitoPoolUser.assets"
         ],
         "lookupRole": {
-          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-us-east-1",
+          "arn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-lookup-role-820242930388-us-east-1",
           "requiresBootstrapStackVersion": 8,
           "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
         }
@@ -95,21 +95,21 @@
     },
     "ApiLambdaProxy": {
       "type": "aws:cloudformation:stack",
-      "environment": "aws://unknown-account/us-east-1",
+      "environment": "aws://820242930388/us-east-1",
       "properties": {
         "templateFile": "ApiLambdaProxy.template.json",
         "terminationProtection": false,
         "validateOnSynth": false,
-        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-us-east-1",
-        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1/523a1a2133d885aab5bd35caf6a820b29e62003737ebfb451f8d9a6d6f894d39.json",
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-deploy-role-820242930388-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-cfn-exec-role-820242930388-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-820242930388-us-east-1/6494d29ea5ab5699e7851b043d13831b7ae4e9bea438f140298ed6258574262a.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
           "ApiLambdaProxy.assets"
         ],
         "lookupRole": {
-          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-us-east-1",
+          "arn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-lookup-role-820242930388-us-east-1",
           "requiresBootstrapStackVersion": 8,
           "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
         }
@@ -119,16 +119,46 @@
         "ApiLambdaProxy.assets"
       ],
       "metadata": {
+        "/ApiLambdaProxy/MyEventBus/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyEventBus251E60F8"
+          }
+        ],
         "/ApiLambdaProxy/ApiLambdaProxyFn/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ApiLambdaProxyFnServiceRoleBD9326DA"
           }
         ],
+        "/ApiLambdaProxy/ApiLambdaProxyFn/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiLambdaProxyFnServiceRoleDefaultPolicyA1BFD59B"
+          }
+        ],
         "/ApiLambdaProxy/ApiLambdaProxyFn/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ApiLambdaProxyFn8CF9710C"
+          }
+        ],
+        "/ApiLambdaProxy/ReglaEvento/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReglaEvento9677FD97"
+          }
+        ],
+        "/ApiLambdaProxy/ReglaEvento/EventsRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReglaEventoEventsRoleDA9A529F"
+          }
+        ],
+        "/ApiLambdaProxy/ReglaEvento/EventsRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReglaEventoEventsRoleDefaultPolicy8894C635"
           }
         ],
         "/ApiLambdaProxy/LambdaFuncName": [
@@ -174,21 +204,21 @@
     },
     "UserAuthorizerCognito": {
       "type": "aws:cloudformation:stack",
-      "environment": "aws://unknown-account/us-east-1",
+      "environment": "aws://820242930388/us-east-1",
       "properties": {
         "templateFile": "UserAuthorizerCognito.template.json",
         "terminationProtection": false,
         "validateOnSynth": false,
-        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-us-east-1",
-        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1/94a9927801a32df620d3727228b375d1878295f81f90cf57fc6c0d24a0b816c2.json",
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-deploy-role-820242930388-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-cfn-exec-role-820242930388-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-820242930388-us-east-1/1cb429668268fe961f96c0641fc0e9f161fbd8aa161a6a6ca2a0daf281cd210f.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
           "UserAuthorizerCognito.assets"
         ],
         "lookupRole": {
-          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-us-east-1",
+          "arn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-lookup-role-820242930388-us-east-1",
           "requiresBootstrapStackVersion": 8,
           "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
         }
@@ -226,7 +256,7 @@
         "/UserAuthorizerCognito/LambdaProxy/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "LambdaProxyDeployment64C634679a85e3156b94495c504c03b071a4315a"
+            "data": "LambdaProxyDeployment64C63467b2ae364fa30b9f70c4534af03af0b017"
           }
         ],
         "/UserAuthorizerCognito/LambdaProxy/DeploymentStage.v1/Resource": [
@@ -247,22 +277,22 @@
             "data": "LambdaProxyhelloA50595DC"
           }
         ],
-        "/UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello": [
+        "/UserAuthorizerCognito/LambdaProxy/Default/hello/POST/ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.POST..hello": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "LambdaProxyhelloGETApiPermissionUserAuthorizerCognitoLambdaProxyE0BC8426GEThelloE9D41C7E"
+            "data": "LambdaProxyhelloPOSTApiPermissionUserAuthorizerCognitoLambdaProxyE0BC8426POSThello170CC783"
           }
         ],
-        "/UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.Test.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello": [
+        "/UserAuthorizerCognito/LambdaProxy/Default/hello/POST/ApiPermission.Test.UserAuthorizerCognitoLambdaProxyE0BC8426.POST..hello": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "LambdaProxyhelloGETApiPermissionTestUserAuthorizerCognitoLambdaProxyE0BC8426GEThello4CB5799A"
+            "data": "LambdaProxyhelloPOSTApiPermissionTestUserAuthorizerCognitoLambdaProxyE0BC8426POSThelloC2458AAB"
           }
         ],
-        "/UserAuthorizerCognito/LambdaProxy/Default/hello/GET/Resource": [
+        "/UserAuthorizerCognito/LambdaProxy/Default/hello/POST/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "LambdaProxyhelloGET0A01B36A"
+            "data": "LambdaProxyhelloPOST9C807974"
           }
         ],
         "/UserAuthorizerCognito/RestApiEndpointUrl": [
@@ -291,6 +321,185 @@
         ]
       },
       "displayName": "UserAuthorizerCognito"
+    },
+    "RegistroTiendasCdkStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "RegistroTiendasCdkStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "RegistroTiendasCdkStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://820242930388/us-east-1",
+      "properties": {
+        "templateFile": "RegistroTiendasCdkStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-deploy-role-820242930388-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-cfn-exec-role-820242930388-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-820242930388-us-east-1/a4cbb7327078774931f2709f3d68cf998d21e4036d639b14bd87f3cd13c41502.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "RegistroTiendasCdkStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-lookup-role-820242930388-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "ApiLambdaProxy",
+        "RegistroTiendasCdkStack.assets"
+      ],
+      "metadata": {
+        "/RegistroTiendasCdkStack/RegistrarTienda1Function/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RegistrarTienda1FunctionServiceRole5BD596F0"
+          }
+        ],
+        "/RegistroTiendasCdkStack/RegistrarTienda1Function/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RegistrarTienda1FunctionServiceRoleDefaultPolicyC15D8BC5"
+          }
+        ],
+        "/RegistroTiendasCdkStack/RegistrarTienda1Function/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RegistrarTienda1Function4DABFDE5"
+          }
+        ],
+        "/RegistroTiendasCdkStack/RegistrarTienda2Function/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RegistrarTienda2FunctionServiceRole559BE954"
+          }
+        ],
+        "/RegistroTiendasCdkStack/RegistrarTienda2Function/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RegistrarTienda2FunctionServiceRoleDefaultPolicyEC0FAE05"
+          }
+        ],
+        "/RegistroTiendasCdkStack/RegistrarTienda2Function/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RegistrarTienda2Function4BF23C9E"
+          }
+        ],
+        "/RegistroTiendasCdkStack/ProcessTienda1Function/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProcessTienda1FunctionServiceRoleAFEF2215"
+          }
+        ],
+        "/RegistroTiendasCdkStack/ProcessTienda1Function/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProcessTienda1FunctionFE13F87F"
+          }
+        ],
+        "/RegistroTiendasCdkStack/ProcessTienda2Function/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProcessTienda2FunctionServiceRoleA6C5F0E9"
+          }
+        ],
+        "/RegistroTiendasCdkStack/ProcessTienda2Function/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProcessTienda2FunctionD2185C2B"
+          }
+        ],
+        "/RegistroTiendasCdkStack/TiendaEvent/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TiendaEvent35872E89"
+          }
+        ],
+        "/RegistroTiendasCdkStack/TiendaEvent/AllowEventRuleRegistroTiendasCdkStackProcessTienda1FunctionDE3EA6F9": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TiendaEventAllowEventRuleRegistroTiendasCdkStackProcessTienda1FunctionDE3EA6F922C7DF77"
+          }
+        ],
+        "/RegistroTiendasCdkStack/Tienda2Event/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Tienda2Event5D52E1B7"
+          }
+        ],
+        "/RegistroTiendasCdkStack/Tienda2Event/AllowEventRuleRegistroTiendasCdkStackProcessTienda2Function035063DB": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Tienda2EventAllowEventRuleRegistroTiendasCdkStackProcessTienda2Function035063DB6BCF8DDE"
+          }
+        ],
+        "/RegistroTiendasCdkStack/GlobalTable": [
+          {
+            "type": "aws:cdk:hasPhysicalName",
+            "data": {
+              "Ref": "GlobalTable89F068B2"
+            }
+          }
+        ],
+        "/RegistroTiendasCdkStack/GlobalTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GlobalTable89F068B2"
+          }
+        ],
+        "/RegistroTiendasCdkStack/GlobalTable2": [
+          {
+            "type": "aws:cdk:hasPhysicalName",
+            "data": {
+              "Ref": "GlobalTable2DECA759E"
+            }
+          }
+        ],
+        "/RegistroTiendasCdkStack/GlobalTable2/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GlobalTable2DECA759E"
+          }
+        ],
+        "/RegistroTiendasCdkStack/tiendaLambdaARN": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "tiendaLambdaARN"
+          }
+        ],
+        "/RegistroTiendasCdkStack/tienda2LambdaARN": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "tienda2LambdaARN"
+          }
+        ],
+        "/RegistroTiendasCdkStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/RegistroTiendasCdkStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/RegistroTiendasCdkStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "RegistroTiendasCdkStack"
     },
     "Tree": {
       "type": "cdk:tree",

@@ -15,15 +15,15 @@
         }
       }
     },
-    "6494d29ea5ab5699e7851b043d13831b7ae4e9bea438f140298ed6258574262a": {
+    "a4cbb7327078774931f2709f3d68cf998d21e4036d639b14bd87f3cd13c41502": {
       "source": {
-        "path": "ApiLambdaProxy.template.json",
+        "path": "RegistroTiendasCdkStack.template.json",
         "packaging": "file"
       },
       "destinations": {
         "820242930388-us-east-1": {
           "bucketName": "cdk-hnb659fds-assets-820242930388-us-east-1",
-          "objectKey": "6494d29ea5ab5699e7851b043d13831b7ae4e9bea438f140298ed6258574262a.json",
+          "objectKey": "a4cbb7327078774931f2709f3d68cf998d21e4036d639b14bd87f3cd13c41502.json",
           "region": "us-east-1",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-file-publishing-role-820242930388-us-east-1"
         }

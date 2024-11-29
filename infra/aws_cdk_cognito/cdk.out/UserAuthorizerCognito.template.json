@@ -83,7 +83,7 @@
     "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Account"
    }
   },
-  "LambdaProxyDeployment64C634679a85e3156b94495c504c03b071a4315a": {
+  "LambdaProxyDeployment64C63467b2ae364fa30b9f70c4534af03af0b017": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "Description": "Automatically created by the RestApi construct",
@@ -92,7 +92,7 @@
     }
    },
    "DependsOn": [
-    "LambdaProxyhelloGET0A01B36A",
+    "LambdaProxyhelloPOST9C807974",
     "LambdaProxyhelloA50595DC"
    ],
    "Metadata": {
@@ -103,7 +103,7 @@
    "Type": "AWS::ApiGateway::Stage",
    "Properties": {
     "DeploymentId": {
-     "Ref": "LambdaProxyDeployment64C634679a85e3156b94495c504c03b071a4315a"
+     "Ref": "LambdaProxyDeployment64C63467b2ae364fa30b9f70c4534af03af0b017"
     },
     "RestApiId": {
      "Ref": "LambdaProxy04222A64"
@@ -135,7 +135,7 @@
     "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/Resource"
    }
   },
-  "LambdaProxyhelloGETApiPermissionUserAuthorizerCognitoLambdaProxyE0BC8426GEThelloE9D41C7E": {
+  "LambdaProxyhelloPOSTApiPermissionUserAuthorizerCognitoLambdaProxyE0BC8426POSThello170CC783": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -151,11 +151,7 @@
        {
         "Ref": "AWS::Partition"
        },
-       ":execute-api:us-east-1:",
-       {
-        "Ref": "AWS::AccountId"
-       },
-       ":",
+       ":execute-api:us-east-1:820242930388:",
        {
         "Ref": "LambdaProxy04222A64"
        },
@@ -163,16 +159,16 @@
        {
         "Ref": "LambdaProxyDeploymentStagev142BEB93C"
        },
-       "/GET/hello"
+       "/POST/hello"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello"
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/POST/ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.POST..hello"
    }
   },
-  "LambdaProxyhelloGETApiPermissionTestUserAuthorizerCognitoLambdaProxyE0BC8426GEThello4CB5799A": {
+  "LambdaProxyhelloPOSTApiPermissionTestUserAuthorizerCognitoLambdaProxyE0BC8426POSThelloC2458AAB": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -188,31 +184,27 @@
        {
         "Ref": "AWS::Partition"
        },
-       ":execute-api:us-east-1:",
-       {
-        "Ref": "AWS::AccountId"
-       },
-       ":",
+       ":execute-api:us-east-1:820242930388:",
        {
         "Ref": "LambdaProxy04222A64"
        },
-       "/test-invoke-stage/GET/hello"
+       "/test-invoke-stage/POST/hello"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.Test.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello"
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/POST/ApiPermission.Test.UserAuthorizerCognitoLambdaProxyE0BC8426.POST..hello"
    }
   },
-  "LambdaProxyhelloGET0A01B36A": {
+  "LambdaProxyhelloPOST9C807974": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
     "AuthorizationType": "COGNITO_USER_POOLS",
     "AuthorizerId": {
      "Ref": "AuthorizerForProxyLambda4987AF9F"
     },
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "Integration": {
      "IntegrationHttpMethod": "POST",
      "Type": "AWS_PROXY",
@@ -241,7 +233,7 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/Resource"
+    "aws:cdk:path": "UserAuthorizerCognito/LambdaProxy/Default/hello/POST/Resource"
    }
   },
   "CDKMetadata": {

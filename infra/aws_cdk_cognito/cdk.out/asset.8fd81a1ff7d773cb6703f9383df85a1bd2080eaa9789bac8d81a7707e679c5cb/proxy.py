@@ -23,7 +23,7 @@ def lambda_handler(event, context):
                     'Source': 'custom.api.proxy',
                     'DetailType': 'API Request',
                     'Detail': json.dumps(event_detail),
-                    'EventBusName': 'MyCustomEventBus'
+                    'EventBusName': os.environ['EVENT_BUS_NAME']
                 }
             ]
         )

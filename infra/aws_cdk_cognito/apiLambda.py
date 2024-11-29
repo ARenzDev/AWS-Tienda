@@ -5,7 +5,8 @@ import aws_cdk as cdk
 from aws_cdk import (
   Stack,
   aws_lambda,
-  aws_events as events
+  aws_events as events,
+  aws_events_targets as targets
 )
 from constructs import Construct
 
@@ -29,8 +30,19 @@ class ApiLambdaProxy(Stack):
       },
       timeout=cdk.Duration.minutes(5)
     )
+    
+    regla_evento = events.Rule(self, 'ReglaEvento',  
+            event_pattern={  
+                "source": ["custom.api.proxy"],  
+            }  
+    ) 
+    # regla_evento.add_target(targets.EventBus(event_bus.event_bus_name))
+    # lambda_proxy_fn.grant_invoke(event_bus.event_bus_arn)
+    
+    regla_evento.add_target(targets.EventBus(event_bus))  
 
-    event_bus.grant_put_events_to(lambda_proxy_fn)
+    # Permitir que la función Lambda envíe eventos al EventBus  
+    event_bus.grant_all_put_events(lambda_proxy_fn)  
     self.lambda_fn = lambda_proxy_fn
 
 
