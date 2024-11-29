@@ -271,10 +271,10 @@
             "data": "LambdaProxyEndpointCBA10A39"
           }
         ],
-        "/UserAuthorizerCognito/LambdaProxy/Default/hello/Resource": [
+        "/UserAuthorizerCognito/LambdaProxy/Default/proxy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "LambdaProxyhelloA50595DC"
+            "data": "LambdaProxyproxyFDEAC71E"
           }
         ],
         "/UserAuthorizerCognito/LambdaProxy/Default/hello/POST/ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.POST..hello": [

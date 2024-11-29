@@ -1,7 +1,7 @@
 {
   "version": "38.0.1",
   "files": {
-    "68ef72c71ab3dc535d15b759bf5ec03e4a9c205151ec8e9bb173c9885b38a97c": {
+    "7a62a2638bdaf5c4b75f9047a592e8cceca8462cc2d51b3cd912c524e71a4d20": {
       "source": {
         "path": "cognitoPoolUser.template.json",
         "packaging": "file"

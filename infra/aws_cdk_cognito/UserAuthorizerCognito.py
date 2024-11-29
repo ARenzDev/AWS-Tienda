@@ -25,7 +25,7 @@ class UserAuthorizerCognito(Stack):
       endpoint_export_name='ApiGatewayRestApiEndpoint'
     )
 
-    hello = lambda_rest_api.root.add_resource("hello")
+    hello = lambda_rest_api.root.add_resource("proxy")
     hello.add_method('POST',
       aws_apigateway.LambdaIntegration(
         handler=lambda_fn

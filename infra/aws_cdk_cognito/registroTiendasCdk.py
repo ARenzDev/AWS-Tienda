@@ -77,6 +77,7 @@ class RegistroTiendasCdkStack(Stack):
             }  
         )
         tienda1_event_rule.add_target(targets.LambdaFunction(process_tienda1_lambda))
+        
 
         
         tienda2_event_rule = events.Rule(

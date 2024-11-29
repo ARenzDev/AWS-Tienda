@@ -1,6 +1,7 @@
 {
   "version": "38.0.1",
   "files": {
+<<<<<<< HEAD
     "e8de297a50126d84eb2017c12ae2aa8541793cf09b7655f4b3d3455c5a6f0800": {
       "source": {
         "path": "asset.e8de297a50126d84eb2017c12ae2aa8541793cf09b7655f4b3d3455c5a6f0800",
@@ -16,16 +17,41 @@
       }
     },
     "a4cbb7327078774931f2709f3d68cf998d21e4036d639b14bd87f3cd13c41502": {
+=======
+    "d9649fdc216024e8a0ef982a58a97fbd8935bfbdd737a2a90ab3af598998debd": {
+      "source": {
+        "path": "asset.d9649fdc216024e8a0ef982a58a97fbd8935bfbdd737a2a90ab3af598998debd",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "891612579761-us-east-1": {
+          "bucketName": "cdk-hnb659fds-assets-891612579761-us-east-1",
+          "objectKey": "d9649fdc216024e8a0ef982a58a97fbd8935bfbdd737a2a90ab3af598998debd.zip",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::891612579761:role/cdk-hnb659fds-file-publishing-role-891612579761-us-east-1"
+        }
+      }
+    },
+    "bc5d2acaeb0ac3484d4aa48aca8e2790fa1a41343b1c164538201a6fb7e8bdde": {
+>>>>>>> 10d0a38ec02ff3a8649dae9ef24dee54c19e28fc
       "source": {
         "path": "RegistroTiendasCdkStack.template.json",
         "packaging": "file"
       },
       "destinations": {
+<<<<<<< HEAD
         "820242930388-us-east-1": {
           "bucketName": "cdk-hnb659fds-assets-820242930388-us-east-1",
           "objectKey": "a4cbb7327078774931f2709f3d68cf998d21e4036d639b14bd87f3cd13c41502.json",
           "region": "us-east-1",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::820242930388:role/cdk-hnb659fds-file-publishing-role-820242930388-us-east-1"
+=======
+        "891612579761-us-east-1": {
+          "bucketName": "cdk-hnb659fds-assets-891612579761-us-east-1",
+          "objectKey": "bc5d2acaeb0ac3484d4aa48aca8e2790fa1a41343b1c164538201a6fb7e8bdde.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::891612579761:role/cdk-hnb659fds-file-publishing-role-891612579761-us-east-1"
+>>>>>>> 10d0a38ec02ff3a8649dae9ef24dee54c19e28fc
         }
       }
     }

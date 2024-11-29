@@ -787,13 +787,13 @@
                 "id": "Default",
                 "path": "UserAuthorizerCognito/LambdaProxy/Default",
                 "children": {
-                  "hello": {
-                    "id": "hello",
-                    "path": "UserAuthorizerCognito/LambdaProxy/Default/hello",
+                  "proxy": {
+                    "id": "proxy",
+                    "path": "UserAuthorizerCognito/LambdaProxy/Default/proxy",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "UserAuthorizerCognito/LambdaProxy/Default/hello/Resource",
+                        "path": "UserAuthorizerCognito/LambdaProxy/Default/proxy/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                           "aws:cdk:cloudformation:props": {
@@ -803,7 +803,7 @@
                                 "RootResourceId"
                               ]
                             },
-                            "pathPart": "hello",
+                            "pathPart": "proxy",
                             "restApiId": {
                               "Ref": "LambdaProxy04222A64"
                             }
@@ -922,7 +922,7 @@
                                   "integrationHttpMethod": "POST"
                                 },
                                 "resourceId": {
-                                  "Ref": "LambdaProxyhelloA50595DC"
+                                  "Ref": "LambdaProxyproxyFDEAC71E"
                                 },
                                 "restApiId": {
                                   "Ref": "LambdaProxy04222A64"
