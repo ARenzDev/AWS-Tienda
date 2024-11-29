@@ -1,0 +1,830 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "cognitoPoolUser": {
+        "id": "cognitoPoolUser",
+        "path": "cognitoPoolUser",
+        "children": {
+          "UserPool": {
+            "id": "UserPool",
+            "path": "cognitoPoolUser/UserPool",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "cognitoPoolUser/UserPool/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Cognito::UserPool",
+                  "aws:cdk:cloudformation:props": {
+                    "accountRecoverySetting": {
+                      "recoveryMechanisms": [
+                        {
+                          "name": "verified_email",
+                          "priority": 1
+                        }
+                      ]
+                    },
+                    "adminCreateUserConfig": {
+                      "allowAdminCreateUserOnly": false
+                    },
+                    "autoVerifiedAttributes": [
+                      "email"
+                    ],
+                    "emailVerificationMessage": "The verification code to your new account is {####}",
+                    "emailVerificationSubject": "Verify your new account",
+                    "policies": {
+                      "passwordPolicy": {
+                        "minimumLength": 8,
+                        "requireLowercase": false,
+                        "requireUppercase": false,
+                        "requireNumbers": false,
+                        "requireSymbols": false
+                      }
+                    },
+                    "smsVerificationMessage": "The verification code to your new account is {####}",
+                    "usernameAttributes": [
+                      "email"
+                    ],
+                    "userPoolName": "UserPoolTiendaApiGateway",
+                    "verificationMessageTemplate": {
+                      "defaultEmailOption": "CONFIRM_WITH_CODE",
+                      "emailMessage": "The verification code to your new account is {####}",
+                      "emailSubject": "Verify your new account",
+                      "smsMessage": "The verification code to your new account is {####}"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_cognito.CfnUserPool",
+                  "version": "2.171.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_cognito.UserPool",
+              "version": "2.171.1"
+            }
+          },
+          "UserPoolClient": {
+            "id": "UserPoolClient",
+            "path": "cognitoPoolUser/UserPoolClient",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "cognitoPoolUser/UserPoolClient/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Cognito::UserPoolClient",
+                  "aws:cdk:cloudformation:props": {
+                    "allowedOAuthFlows": [
+                      "implicit",
+                      "code"
+                    ],
+                    "allowedOAuthFlowsUserPoolClient": true,
+                    "allowedOAuthScopes": [
+                      "profile",
+                      "phone",
+                      "email",
+                      "openid",
+                      "aws.cognito.signin.user.admin"
+                    ],
+                    "callbackUrLs": [
+                      "https://example.com"
+                    ],
+                    "explicitAuthFlows": [
+                      "ALLOW_USER_PASSWORD_AUTH",
+                      "ALLOW_ADMIN_USER_PASSWORD_AUTH",
+                      "ALLOW_CUSTOM_AUTH",
+                      "ALLOW_USER_SRP_AUTH",
+                      "ALLOW_REFRESH_TOKEN_AUTH"
+                    ],
+                    "supportedIdentityProviders": [
+                      "COGNITO"
+                    ],
+                    "userPoolId": {
+                      "Ref": "UserPool6BA7E5F2"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_cognito.CfnUserPoolClient",
+                  "version": "2.171.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_cognito.UserPoolClient",
+              "version": "2.171.1"
+            }
+          },
+          "UserPoolId": {
+            "id": "UserPoolId",
+            "path": "cognitoPoolUser/UserPoolId",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.171.1"
+            }
+          },
+          "UserPoolClientId": {
+            "id": "UserPoolClientId",
+            "path": "cognitoPoolUser/UserPoolClientId",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.171.1"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "cognitoPoolUser/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "cognitoPoolUser/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.171.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "Exports": {
+            "id": "Exports",
+            "path": "cognitoPoolUser/Exports",
+            "children": {
+              "Output{\"Fn::GetAtt\":[\"UserPool6BA7E5F2\",\"Arn\"]}": {
+                "id": "Output{\"Fn::GetAtt\":[\"UserPool6BA7E5F2\",\"Arn\"]}",
+                "path": "cognitoPoolUser/Exports/Output{\"Fn::GetAtt\":[\"UserPool6BA7E5F2\",\"Arn\"]}",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.171.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "cognitoPoolUser/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.171.1"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "cognitoPoolUser/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.171.1"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.171.1"
+        }
+      },
+      "ApiLambdaProxy": {
+        "id": "ApiLambdaProxy",
+        "path": "ApiLambdaProxy",
+        "children": {
+          "ApiLambdaProxyFn": {
+            "id": "ApiLambdaProxyFn",
+            "path": "ApiLambdaProxy/ApiLambdaProxyFn",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "ApiLambdaProxy/ApiLambdaProxyFn/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "ApiLambdaProxy/ApiLambdaProxyFn/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.171.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiLambdaProxy/ApiLambdaProxyFn/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.171.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.171.1"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "ApiLambdaProxy/ApiLambdaProxyFn/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "ApiLambdaProxy/ApiLambdaProxyFn/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.171.1"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "ApiLambdaProxy/ApiLambdaProxyFn/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.171.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.171.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "ApiLambdaProxy/ApiLambdaProxyFn/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1"
+                      },
+                      "s3Key": "28e9c996a6584a95a4179599e0df98e8e49f8c04f5da1d1fe24a64f6c8eeaa3c.zip"
+                    },
+                    "description": "Funcion de proxy lambda\"",
+                    "functionName": "ApiLambdaProxy",
+                    "handler": "proxy.lambda_handler",
+                    "role": {
+                      "Fn::GetAtt": [
+                        "ApiLambdaProxyFnServiceRoleBD9326DA",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "python3.9",
+                    "timeout": 300
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.171.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.171.1"
+            }
+          },
+          "LambdaFuncName": {
+            "id": "LambdaFuncName",
+            "path": "ApiLambdaProxy/LambdaFuncName",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.171.1"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "ApiLambdaProxy/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "ApiLambdaProxy/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.171.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "Exports": {
+            "id": "Exports",
+            "path": "ApiLambdaProxy/Exports",
+            "children": {
+              "Output{\"Fn::GetAtt\":[\"ApiLambdaProxyFn8CF9710C\",\"Arn\"]}": {
+                "id": "Output{\"Fn::GetAtt\":[\"ApiLambdaProxyFn8CF9710C\",\"Arn\"]}",
+                "path": "ApiLambdaProxy/Exports/Output{\"Fn::GetAtt\":[\"ApiLambdaProxyFn8CF9710C\",\"Arn\"]}",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.171.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "ApiLambdaProxy/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.171.1"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "ApiLambdaProxy/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.171.1"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.171.1"
+        }
+      },
+      "UserAuthorizerCognito": {
+        "id": "UserAuthorizerCognito",
+        "path": "UserAuthorizerCognito",
+        "children": {
+          "AuthorizerForProxyLambda": {
+            "id": "AuthorizerForProxyLambda",
+            "path": "UserAuthorizerCognito/AuthorizerForProxyLambda",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "UserAuthorizerCognito/AuthorizerForProxyLambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Authorizer",
+                  "aws:cdk:cloudformation:props": {
+                    "identitySource": "method.request.header.Authorization",
+                    "name": "UserAuthorizerCognitoAuthorizerForProxyLambda89881803",
+                    "providerArns": [
+                      {
+                        "Fn::ImportValue": "cognitoPoolUser:ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00"
+                      }
+                    ],
+                    "restApiId": {
+                      "Ref": "LambdaProxy04222A64"
+                    },
+                    "type": "COGNITO_USER_POOLS"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnAuthorizer",
+                  "version": "2.171.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_apigateway.CognitoUserPoolsAuthorizer",
+              "version": "2.171.1"
+            }
+          },
+          "LambdaProxy": {
+            "id": "LambdaProxy",
+            "path": "UserAuthorizerCognito/LambdaProxy",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "UserAuthorizerCognito/LambdaProxy/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "lambda-api"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnRestApi",
+                  "version": "2.171.1"
+                }
+              },
+              "CloudWatchRole": {
+                "id": "CloudWatchRole",
+                "path": "UserAuthorizerCognito/LambdaProxy/CloudWatchRole",
+                "children": {
+                  "ImportCloudWatchRole": {
+                    "id": "ImportCloudWatchRole",
+                    "path": "UserAuthorizerCognito/LambdaProxy/CloudWatchRole/ImportCloudWatchRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.171.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "UserAuthorizerCognito/LambdaProxy/CloudWatchRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "apigateway.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.171.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.171.1"
+                }
+              },
+              "Account": {
+                "id": "Account",
+                "path": "UserAuthorizerCognito/LambdaProxy/Account",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                  "aws:cdk:cloudformation:props": {
+                    "cloudWatchRoleArn": {
+                      "Fn::GetAtt": [
+                        "LambdaProxyCloudWatchRole44FDA5FC",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnAccount",
+                  "version": "2.171.1"
+                }
+              },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "UserAuthorizerCognito/LambdaProxy/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "UserAuthorizerCognito/LambdaProxy/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "description": "Automatically created by the RestApi construct",
+                        "restApiId": {
+                          "Ref": "LambdaProxy04222A64"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
+                      "version": "2.171.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
+                  "version": "2.171.1"
+                }
+              },
+              "DeploymentStage.v1": {
+                "id": "DeploymentStage.v1",
+                "path": "UserAuthorizerCognito/LambdaProxy/DeploymentStage.v1",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "UserAuthorizerCognito/LambdaProxy/DeploymentStage.v1/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "deploymentId": {
+                          "Ref": "LambdaProxyDeployment64C634679a85e3156b94495c504c03b071a4315a"
+                        },
+                        "restApiId": {
+                          "Ref": "LambdaProxy04222A64"
+                        },
+                        "stageName": "v1"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
+                      "version": "2.171.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Stage",
+                  "version": "2.171.1"
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "UserAuthorizerCognito/LambdaProxy/Endpoint",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.171.1"
+                }
+              },
+              "Default": {
+                "id": "Default",
+                "path": "UserAuthorizerCognito/LambdaProxy/Default",
+                "children": {
+                  "hello": {
+                    "id": "hello",
+                    "path": "UserAuthorizerCognito/LambdaProxy/Default/hello",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "UserAuthorizerCognito/LambdaProxy/Default/hello/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "LambdaProxy04222A64",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "hello",
+                            "restApiId": {
+                              "Ref": "LambdaProxy04222A64"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.171.1"
+                        }
+                      },
+                      "GET": {
+                        "id": "GET",
+                        "path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET",
+                        "children": {
+                          "ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello": {
+                            "id": "ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello",
+                            "path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::ImportValue": "ApiLambdaProxy:ExportsOutputFnGetAttApiLambdaProxyFn8CF9710CArn95182CA3"
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-east-1:",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "LambdaProxy04222A64"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "LambdaProxyDeploymentStagev142BEB93C"
+                                      },
+                                      "/GET/hello"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.171.1"
+                            }
+                          },
+                          "ApiPermission.Test.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello": {
+                            "id": "ApiPermission.Test.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello",
+                            "path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.Test.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::ImportValue": "ApiLambdaProxy:ExportsOutputFnGetAttApiLambdaProxyFn8CF9710CArn95182CA3"
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-east-1:",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "LambdaProxy04222A64"
+                                      },
+                                      "/test-invoke-stage/GET/hello"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.171.1"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "UserAuthorizerCognito/LambdaProxy/Default/hello/GET/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "authorizationType": "COGNITO_USER_POOLS",
+                                "authorizerId": {
+                                  "Ref": "AuthorizerForProxyLambda4987AF9F"
+                                },
+                                "httpMethod": "GET",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::ImportValue": "ApiLambdaProxy:ExportsOutputFnGetAttApiLambdaProxyFn8CF9710CArn95182CA3"
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                },
+                                "resourceId": {
+                                  "Ref": "LambdaProxyhelloA50595DC"
+                                },
+                                "restApiId": {
+                                  "Ref": "LambdaProxy04222A64"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.171.1"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.171.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.171.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.ResourceBase",
+                  "version": "2.171.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_apigateway.LambdaRestApi",
+              "version": "2.171.1"
+            }
+          },
+          "RestApiEndpointUrl": {
+            "id": "RestApiEndpointUrl",
+            "path": "UserAuthorizerCognito/RestApiEndpointUrl",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.171.1"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "UserAuthorizerCognito/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "UserAuthorizerCognito/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.171.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "UserAuthorizerCognito/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.171.1"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "UserAuthorizerCognito/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.171.1"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.171.1"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.4.2"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.171.1"
+    }
+  }
+}

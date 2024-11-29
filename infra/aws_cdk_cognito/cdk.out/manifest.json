@@ -1,0 +1,302 @@
+{
+  "version": "38.0.1",
+  "artifacts": {
+    "cognitoPoolUser.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "cognitoPoolUser.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "cognitoPoolUser": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/us-east-1",
+      "properties": {
+        "templateFile": "cognitoPoolUser.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1/68ef72c71ab3dc535d15b759bf5ec03e4a9c205151ec8e9bb173c9885b38a97c.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "cognitoPoolUser.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "cognitoPoolUser.assets"
+      ],
+      "metadata": {
+        "/cognitoPoolUser/UserPool/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserPool6BA7E5F2"
+          }
+        ],
+        "/cognitoPoolUser/UserPoolClient/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserPoolClient2F5918F7"
+          }
+        ],
+        "/cognitoPoolUser/UserPoolId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserPoolId"
+          }
+        ],
+        "/cognitoPoolUser/UserPoolClientId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserPoolClientId"
+          }
+        ],
+        "/cognitoPoolUser/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/cognitoPoolUser/Exports/Output{\"Fn::GetAtt\":[\"UserPool6BA7E5F2\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttUserPool6BA7E5F2Arn686ACC00"
+          }
+        ],
+        "/cognitoPoolUser/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/cognitoPoolUser/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "cognitoPoolUser"
+    },
+    "ApiLambdaProxy.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "ApiLambdaProxy.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "ApiLambdaProxy": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/us-east-1",
+      "properties": {
+        "templateFile": "ApiLambdaProxy.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1/523a1a2133d885aab5bd35caf6a820b29e62003737ebfb451f8d9a6d6f894d39.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "ApiLambdaProxy.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "cognitoPoolUser",
+        "ApiLambdaProxy.assets"
+      ],
+      "metadata": {
+        "/ApiLambdaProxy/ApiLambdaProxyFn/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiLambdaProxyFnServiceRoleBD9326DA"
+          }
+        ],
+        "/ApiLambdaProxy/ApiLambdaProxyFn/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiLambdaProxyFn8CF9710C"
+          }
+        ],
+        "/ApiLambdaProxy/LambdaFuncName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaFuncName"
+          }
+        ],
+        "/ApiLambdaProxy/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/ApiLambdaProxy/Exports/Output{\"Fn::GetAtt\":[\"ApiLambdaProxyFn8CF9710C\",\"Arn\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttApiLambdaProxyFn8CF9710CArn95182CA3"
+          }
+        ],
+        "/ApiLambdaProxy/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/ApiLambdaProxy/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "ApiLambdaProxy"
+    },
+    "UserAuthorizerCognito.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "UserAuthorizerCognito.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "UserAuthorizerCognito": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/us-east-1",
+      "properties": {
+        "templateFile": "UserAuthorizerCognito.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1/94a9927801a32df620d3727228b375d1878295f81f90cf57fc6c0d24a0b816c2.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "UserAuthorizerCognito.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "ApiLambdaProxy",
+        "cognitoPoolUser",
+        "UserAuthorizerCognito.assets"
+      ],
+      "metadata": {
+        "/UserAuthorizerCognito/AuthorizerForProxyLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AuthorizerForProxyLambda4987AF9F"
+          }
+        ],
+        "/UserAuthorizerCognito/LambdaProxy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaProxy04222A64"
+          }
+        ],
+        "/UserAuthorizerCognito/LambdaProxy/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaProxyCloudWatchRole44FDA5FC"
+          }
+        ],
+        "/UserAuthorizerCognito/LambdaProxy/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaProxyAccountCF3FAC1B"
+          }
+        ],
+        "/UserAuthorizerCognito/LambdaProxy/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaProxyDeployment64C634679a85e3156b94495c504c03b071a4315a"
+          }
+        ],
+        "/UserAuthorizerCognito/LambdaProxy/DeploymentStage.v1/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaProxyDeploymentStagev142BEB93C"
+          }
+        ],
+        "/UserAuthorizerCognito/LambdaProxy/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaProxyEndpointCBA10A39"
+          }
+        ],
+        "/UserAuthorizerCognito/LambdaProxy/Default/hello/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaProxyhelloA50595DC"
+          }
+        ],
+        "/UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaProxyhelloGETApiPermissionUserAuthorizerCognitoLambdaProxyE0BC8426GEThelloE9D41C7E"
+          }
+        ],
+        "/UserAuthorizerCognito/LambdaProxy/Default/hello/GET/ApiPermission.Test.UserAuthorizerCognitoLambdaProxyE0BC8426.GET..hello": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaProxyhelloGETApiPermissionTestUserAuthorizerCognitoLambdaProxyE0BC8426GEThello4CB5799A"
+          }
+        ],
+        "/UserAuthorizerCognito/LambdaProxy/Default/hello/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaProxyhelloGET0A01B36A"
+          }
+        ],
+        "/UserAuthorizerCognito/RestApiEndpointUrl": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RestApiEndpointUrl"
+          }
+        ],
+        "/UserAuthorizerCognito/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/UserAuthorizerCognito/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/UserAuthorizerCognito/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "UserAuthorizerCognito"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
